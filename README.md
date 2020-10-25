@@ -1,3 +1,10 @@
+# Medieval-Quests-Editor
+
+This editor is a visual quest editor that uses flow-based programming to design NPC dialog and quest logic without having to write JSON by hand.
+
+# React App Information
+-----------------------------------------------------------------------------------
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
