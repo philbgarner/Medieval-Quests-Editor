@@ -15,7 +15,7 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  min-height: 10vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -28,11 +28,39 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.Rete {
+  width: 100%;
+  height: 90vh;
+  background-color: azure;
+}
+
+.text-fragment {
+  max-width: 12em;
+  max-height: 1.5em;
+  line-height: 1.5em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  float: left;
+}
+
+.condition-name {
+  max-width: 7em;
+}
+.condition-param-name {
+  max-width: 5em;
+}
+.condition-param-qty {
+  max-width: 4em;
+}
+.condition-param-logic {
+  max-width: 7em;
+}
+
+.socket.response {
+  background: blueviolet;
+}
+
+.socket.logicalthen {
+  background: blueviolet;
 }
