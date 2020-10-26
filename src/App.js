@@ -80,11 +80,15 @@ class ReactConditionComponent extends React.Component {
     super(props)
 
     this.state = {
-      conditions: [],
       selectedCondition: 'has_item',
       selectedParam: 'exactly',
       paramNameValue: '',
       paramQtyValue: 0
+    }
+
+    this.onUpdate = props.onUpdate;
+    if (this.onUpdate === undefined) {
+      this.onUpdate = () => {}
     }
 
     this.definitions = [
@@ -106,9 +110,19 @@ class ReactConditionComponent extends React.Component {
       }
     ]
   }
-
-  componentDidMount() {
-
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    if (prevState.selectedCondition !== this.state.selectedCondition) {
+      this.onUpdate({ selectedCondition: this.state.selectedCondition })
+    }
+    if (prevState.selectedParam !== this.state.selectedParam) {
+      this.onUpdate({ selectedParam: this.state.selectedParam })
+    }
+    if (prevState.paramNameValue !== this.state.paramNameValue) {
+      this.onUpdate({ paramNameValue: this.state.paramNameValue })
+    }
+    if (prevState.paramQtyValue !== this.state.paramQtyValue) {
+      this.onUpdate({ paramQtyValue: this.state.paramQtyValue })
+    }
   }
 
   render () {
@@ -169,7 +183,13 @@ class ConversationConditionControl extends Rete.Control {
     super(key)
     this.render = 'react'
     this.component = ReactConditionComponent
-    this.props = { emitter, name }
+    this.props = { emitter, name, onUpdate: (params) => {
+        for (let id in params) {
+          let param = params[id]
+          this.putData(id, param)
+        }
+      }
+    }
   }
 }
 
